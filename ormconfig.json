@@ -1,4 +1,13 @@
 {
     "type": "sqlite",
+<<<<<<< HEAD
+    "database": "./src/database/database.sqlite",
+    "migrations": ["./src/database/migrations/**.ts"],
+    "cli":
+    {
+        "migrationsDir": "./src/database/migrations"
+    }
+=======
     "database": "./src/database/database.sqlite"
+>>>>>>> 41eaa33e150e74fbb151410a2f8c2556f5ff8a70
 }
