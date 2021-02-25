@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
-
+import { v4 as uuid } from 'uuid'; // opções das formas como o id pode ser gerado: v1, v3, v4, v5
 
 /*
     // name attribute equals column name
@@ -24,9 +24,13 @@ class User{
     email: string;
 
     @CreateDateColumn()
-    creadted_at: Date;
+    created_at: Date;
 
-
+    constructor(){
+        if(!this.id){
+            this.id = uuid();
+        }
+    }
 }
 
 export { User }
