@@ -7,5 +7,4 @@
     {
         "migrationsDir": "./src/database/migrations"
     }
-
 }
