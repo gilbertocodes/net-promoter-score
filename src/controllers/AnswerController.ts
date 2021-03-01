@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import { getCustomRepository } from "typeorm";
+import { AppError } from "../errors/AppError";
 import { SurveysUsersRepository } from "../repositories/SurveysUsersRepository";
 
 
 
-class AnswerController{
+class AnswerController {
 
     // http://localhost:9999/answers/1?u=02ca335e-5031-4828-a449-f01c20c7bbe6
     /**
@@ -18,7 +19,7 @@ class AnswerController{
      * 
      */
 
-    async execute(req: Request, res:Response){
+    async execute(req: Request, res: Response) {
         const { value } = req.params;
         const { u } = req.query;
 
@@ -28,10 +29,13 @@ class AnswerController{
             id: String(u)
         });
 
-        if(!surveyUser){
+        if (!surveyUser) {
+            throw new AppError("Survey User does not exists!");
+            /* 
             return res.status(400).json({
                 error: "Survey User does not exists!"
-            });
+            }); 
+            */
         }
 
         surveyUser.value = Number(value);
